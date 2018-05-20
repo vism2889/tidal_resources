@@ -1,0 +1,18 @@
+-- Midi imports
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.CC
+import Sound.Tidal.MIDI.Stream
+import Sound.Tidal.MIDI.Synth
+
+devs <- midiDevices
+
+mySynth <- midiStream devs "Scarlett 2i4 USB" 1 synthController -- creates midi output on channel 1
+mySynth3 <- midiStream devs "Scarlett 2i4 USB" 3 synthController -- creates midi output on channel 3
+
+-- example pattern
+
+mySynth $ n "[4(3,8),5(5,8)]"
+mySynth3 $ n "19 15 ~ 27/2"
+
+mySynth3 $ slow 2 $ (0.045 ~>) $ n "25 41 73 3 8 9"
+-- (0.045) can be changed, i have found this to be more useful on my system than messing with the latency in SuperCollider
