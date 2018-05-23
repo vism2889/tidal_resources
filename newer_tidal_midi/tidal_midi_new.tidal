@@ -1,0 +1,43 @@
+import Sound.Tidal.Context
+
+
+
+(midicmd, midicmd_p) = pS "midicmd" (Nothing)
+(midichan, midichan_p) = pF "midichan" (Nothing)
+(progNum, progNum_p) = pF "progNum" (Nothing)
+(val, val_p) = pF "val" (Nothing)
+(uid, uid_p) = pF "uid" (Nothing)
+(array, array_p) = pF "array" (Nothing)
+(frames, frames_p) = pF "frames" (Nothing)
+(seconds, seconds_p) = pF "seconds" (Nothing)
+(minutes, minutes_p) = pF "minutes" (Nothing)
+(hours, hours_p) = pF "hours" (Nothing)
+(frameRate, frameRate_p) = pF "frameRate" (Nothing)
+(songPtr, songPtr_p) = pF "songPtr" (Nothing)
+(ctlNum, ctlNum_p) = pF "ctlNum" (Nothing)
+(control, control_p) = pF "control" (Nothing)
+
+
+d2 $ control (_discretise 128 $ slow 16 (scale 0 127 $ (sine1))) # midichan 3 # s "midi" # midicmd "control" # ctlNum 0
+
+d2 $ stack[
+  _discretise 16 (note ((irand 16 ) - 24)) # legato 1,
+  control (_discretise 128 $ slow 16 (scale 32 64 $ (sine1))) # midicmd "control" # ctlNum 0,
+  control (_discretise 128 $ slow 64 (scale 0 16 $ (sine1))) # midicmd "control" # ctlNum 1,
+  control (_discretise 128 $ slow 64 (scale 0 24 $ (sine1))) # midicmd "control" # ctlNum 2,
+  control (_discretise 128 $ slow 16 (scale 0 8 $ (sine1))) # midicmd "control" # ctlNum 3,
+  control (_discretise 128 $ slow 64 (scale 0 16 $ (sine1))) # midicmd "control" # ctlNum 4,
+  control (_discretise 128 $ slow 64 (scale 0 24 $ (sine1))) # midicmd "control" # ctlNum 5,
+  control (_discretise 128 $ slow 16 (scale 0 8 $ (sine1))) # midicmd "control" # ctlNum 6,
+  control (_discretise 128 $ slow 64 (scale 0 16 $ (sine1))) # midicmd "control" # ctlNum 7
+] # midichan 1 # s "midi"
+
+d2 $ stack [
+  every 3 (slow 2) (note "c1*4 g3") # release 2,
+  every 7 (brak) (every 3 (fast 2) (note "[fs1*8]/2")),
+  every 9 (fast 2) (note "as2*4")
+] # midichan 3 # s "midi"
+
+d2 silence
+
+d2 $ discretise 64 (note ((irand 8 ))) # legato 1 # midichan 1 # s "midi"
