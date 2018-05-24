@@ -1,6 +1,6 @@
+-- Working midi when using Tidal and SuperCollider dev-1.0 branches.
+
 import Sound.Tidal.Context
-
-
 
 (midicmd, midicmd_p) = pS "midicmd" (Nothing)
 (midichan, midichan_p) = pF "midichan" (Nothing)
@@ -17,6 +17,9 @@ import Sound.Tidal.Context
 (ctlNum, ctlNum_p) = pF "ctlNum" (Nothing)
 (control, control_p) = pF "control" (Nothing)
 
+
+
+-- examples below:
 
 d2 $ control (_discretise 128 $ slow 16 (scale 0 127 $ (sine1))) # midichan 3 # s "midi" # midicmd "control" # ctlNum 0
 
