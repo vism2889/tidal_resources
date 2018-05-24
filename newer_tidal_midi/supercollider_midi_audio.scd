@@ -1,6 +1,9 @@
 // DO NOT USE THIS AS YOUR STARTUP.SCD FILE.
 // NOTE: Before changing any of the settings manually and executing them (without using code from this in your startup sequence)
 // Be sure to execute ("shift-enter") SuperDirt.start, certain lines of code will not work unless this has been executed first.
+// Have tested this with SuperCollider 3.7 and 3.9, seems to work fine on both of them.
+
+
 
 // first, initialize your midi device.
 (
