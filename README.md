@@ -19,5 +19,9 @@ I've started Using jackaudio for routing internal audio routing into Ableton Liv
 [Patchage](http://drobilla.net/files/Patchage.zip)
 
 
+---
+
+#### [Dealing with conflicting installations of tidal // How to find the version(s) you have installed.](https://github.com/vism2889/tidal_resources/blob/master/MULTIPLES.md)
+
 
 
